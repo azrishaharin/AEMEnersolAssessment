@@ -1,0 +1,56 @@
+<div class="body" style="width: 100vw; height: 100vh; background-color: #20687C">
+  <div class="container display-center">
+    <div class="card col-lg-6">
+      <div class="py-3"><h2 style="text-align: center">Sign in to your dashboard</h2></div>
+      <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="email" class="form-control" id="username" formControlName="username"
+                   aria-describedby="emailHelp" [ngClass]="{'is-invalid': submitted && f.username.errors}">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password"
+                   [ngClass]="{'is-invalid': submitted && f.password.errors}">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button [disabled]="loading" type="submit" class="btn btn-primary btn-block">Sign in</button>
+          </div>
+          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div style="width: 100vw; height: 100vh; justify-content: center; align-items: center">-->
+<!--  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin">-->
+<!--    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>-->
+<!--    <div class="form-group">-->
+<!--      <label for="inputEmail" class="sr-only">Username</label>-->
+<!--      <input type="email" id="inputEmail" class="form-control" formControlName="username" placeholder="Email address" [ngClass]="{'is-invalid': submitted && f.username.errors}">-->
+<!--      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">-->
+<!--        <div *ngIf="f.username.errors.required">Username is required</div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="inputPassword" class="sr-only">Password</label>-->
+<!--      <input type="password" id="inputPassword" class="form-control" formControlName="password" placeholder="Password" [ngClass]="{'is-invalid': submitted && f.password.errors}">-->
+<!--      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">-->
+<!--        <div *ngIf="f.password.errors.required">Password is required</div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <button [disabled]="loading" type="submit" class="btn btn-primary btn-block">Sign in</button>-->
+<!--    </div>-->
+<!--    <div *ngIf="error" class="alert alert-danger">{{error}}</div>-->
+<!--  </form>-->
+<!--</div>-->
