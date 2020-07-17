@@ -1,6 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DataDashboardService} from '../services/data.service';
 import { Chart } from 'chart.js';
+import {TableUsers} from '../models/table-users';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ import { Chart } from 'chart.js';
 export class DashboardComponent implements OnInit {
 
   chart: any;
-  dataTable: string[];
+  dataTable: TableUsers[];
 
   constructor(
     private dataDashboardService: DataDashboardService
@@ -60,6 +61,10 @@ export class DashboardComponent implements OnInit {
             }
           }
         });
+
+        this.dataTable = res['tableUsers'].map(res=>res);
+        console.log(this.dataTable);
+
       })
   }
 
